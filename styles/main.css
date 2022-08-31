@@ -1,0 +1,304 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap");
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: "Montserrat", sans-serif;
+  color: #fff;
+  background: #141414;
+}
+
+.main-header {
+  padding: 1em 2em;
+}
+
+main {
+  flex-grow: 1;
+  padding: 1em 0;
+}
+
+.main-footer {
+  padding: 0.5em 2em;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.category {
+  margin-bottom: 1em;
+}
+.category__header {
+  padding: 1em 2em;
+}
+.category__title {
+  font-size: 1rem;
+}
+
+.remove-transition {
+  transition: unset !important;
+}
+
+.slider {
+  position: relative;
+  padding: 0 2em;
+}
+.slider__indicators {
+  position: absolute;
+  right: 2em;
+  bottom: calc(100% + 10px);
+  display: flex;
+  gap: 5px;
+  opacity: 0;
+}
+.slider:hover .slider__indicators {
+  opacity: 1;
+}
+.slider__indicator {
+  width: 16px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.5);
+  transition: background 1s ease;
+}
+.slider__indicator--active {
+  background: rgba(255, 255, 255, 0.8);
+}
+.slider__controls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.slider__control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2em;
+  z-index: 99;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  opacity: 0;
+  pointer-events: none;
+}
+.slider__control--active {
+  opacity: 1;
+  pointer-events: unset;
+  background: rgba(0, 0, 0, 0.3);
+}
+.slider__control:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+.slider__control-icon {
+  width: 100%;
+  opacity: 0;
+}
+.slider:hover .slider__control--active .slider__control-icon {
+  opacity: 1;
+}
+.slider__track {
+  display: flex;
+  height: 20vw;
+  max-height: 200px;
+  transition: transform 1s ease;
+}
+.slider .slider-item {
+  display: flex;
+  justify-content: flex-end;
+  min-width: 20%;
+  -webkit-animation-name: sliderItemAppear;
+          animation-name: sliderItemAppear;
+  -webkit-animation-duration: 0.8s;
+          animation-duration: 0.8s;
+}
+.slider .slider-item__thumbnail {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.slider .slider-item__thumbnail img {
+  width: calc(100% - 10px);
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 5px;
+}
+.slider .spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+.slider .spinner--active {
+  opacity: 1;
+}
+.slider .spinner .lds-spinner {
+  color: official;
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.slider .spinner .lds-spinner div {
+  transform-origin: 40px 40px;
+  -webkit-animation: lds-spinner 1.2s linear infinite;
+          animation: lds-spinner 1.2s linear infinite;
+}
+.slider .spinner .lds-spinner div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 3px;
+  left: 37px;
+  width: 6px;
+  height: 18px;
+  border-radius: 20%;
+  background: #fff;
+}
+.slider .spinner .lds-spinner div:nth-child(1) {
+  transform: rotate(0deg);
+  -webkit-animation-delay: -1.1s;
+          animation-delay: -1.1s;
+}
+.slider .spinner .lds-spinner div:nth-child(2) {
+  transform: rotate(30deg);
+  -webkit-animation-delay: -1s;
+          animation-delay: -1s;
+}
+.slider .spinner .lds-spinner div:nth-child(3) {
+  transform: rotate(60deg);
+  -webkit-animation-delay: -0.9s;
+          animation-delay: -0.9s;
+}
+.slider .spinner .lds-spinner div:nth-child(4) {
+  transform: rotate(90deg);
+  -webkit-animation-delay: -0.8s;
+          animation-delay: -0.8s;
+}
+.slider .spinner .lds-spinner div:nth-child(5) {
+  transform: rotate(120deg);
+  -webkit-animation-delay: -0.7s;
+          animation-delay: -0.7s;
+}
+.slider .spinner .lds-spinner div:nth-child(6) {
+  transform: rotate(150deg);
+  -webkit-animation-delay: -0.6s;
+          animation-delay: -0.6s;
+}
+.slider .spinner .lds-spinner div:nth-child(7) {
+  transform: rotate(180deg);
+  -webkit-animation-delay: -0.5s;
+          animation-delay: -0.5s;
+}
+.slider .spinner .lds-spinner div:nth-child(8) {
+  transform: rotate(210deg);
+  -webkit-animation-delay: -0.4s;
+          animation-delay: -0.4s;
+}
+.slider .spinner .lds-spinner div:nth-child(9) {
+  transform: rotate(240deg);
+  -webkit-animation-delay: -0.3s;
+          animation-delay: -0.3s;
+}
+.slider .spinner .lds-spinner div:nth-child(10) {
+  transform: rotate(270deg);
+  -webkit-animation-delay: -0.2s;
+          animation-delay: -0.2s;
+}
+.slider .spinner .lds-spinner div:nth-child(11) {
+  transform: rotate(300deg);
+  -webkit-animation-delay: -0.1s;
+          animation-delay: -0.1s;
+}
+.slider .spinner .lds-spinner div:nth-child(12) {
+  transform: rotate(330deg);
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+@-webkit-keyframes lds-spinner {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes lds-spinner {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.slider--numbers .slider-item__number, .slider--numbers .slider-item__thumbnail {
+  width: 100%;
+}
+.slider--numbers .slider-item__thumbnail {
+  width: 50%;
+}
+.slider--numbers .slider-item__thumbnail img {
+  width: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.slider--numbers .slider-item__number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 50%;
+  max-height: 100%;
+  transform: translateX(20%);
+  z-index: -1;
+}
+.slider--numbers .slider-item__number-icon {
+  max-width: 120%;
+  height: 98%;
+  filter: drop-shadow(0 0 1px #fff);
+}
+
+@-webkit-keyframes sliderItemAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sliderItemAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (min-width: 768px) {
+  .slider__track {
+    height: 15vw;
+  }
+}
+@media (min-width: 1200px) {
+  .slider__track {
+    height: 12vw;
+  }
+}/*# sourceMappingURL=main.css.map */
